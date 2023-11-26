@@ -1,6 +1,7 @@
 package com.example.socialratingapi.converter;
 
-import com.example.socialratingapi.data.entity.Student;
+import com.example.socialratingapi.data.entity.Users;
+import com.example.socialratingapi.model.dto.Role.RoleDto;
 import com.example.socialratingapi.model.dto.student.StudentRequestDto;
 import com.example.socialratingapi.model.dto.student.StudentResponseDto;
 import com.example.socialratingapi.model.dto.gender.GenderDto;
@@ -11,19 +12,22 @@ import java.time.LocalDateTime;
 @Component
 public class StudentConverter {
 
-    public StudentResponseDto toDto(Student student) {
+    public StudentResponseDto toDto(Users student) {
         if (student == null) {
             return null;
         }
 
         return StudentResponseDto.builder()
                 .id(student.getId())
-                .firstName(student.getFirstName())
-                .lastName(student.getLastName())
+                .name(student.getName())
                 .surname(student.getSurname())
+                .patronymic(student.getPatronymic())
                 .password(student.getPassword())
-                .email(student.getEmail())
+                .mail(student.getMail())
                 .phone(student.getPhone())
+                .role(student.getRole() != null
+                        ? RoleDto.valueOf(student.getRole().name())
+                        : null)
                 .group(student.getGroup())
                 .faculty(student.getFaculty())
                 .gender(student.getGender() != null
@@ -34,24 +38,27 @@ public class StudentConverter {
 
     }
 
-    public Student toEntity(StudentRequestDto studentDto) {
+    public Users toEntity(StudentRequestDto studentDto) {
         if (studentDto == null) {
             return null;
         }
 
-        return Student.builder()
+        return Users.builder()
                 .createdAt(LocalDateTime.now())
-                .firstName(studentDto.getFirstName())
-                .lastName(studentDto.getLastName())
+                .name(studentDto.getName())
                 .surname(studentDto.getSurname())
+                .patronymic(studentDto.getPatronymic())
                 .password(studentDto.getPassword())
-                .email(studentDto.getEmail())
+                .mail(studentDto.getMail())
                 .phone(studentDto.getPhone())
                 .group(studentDto.getGroup())
+                .role(studentDto.getRole() != null
+                        ? Users.Role.valueOf(studentDto.getRole().name())
+                        : null)
                 .faculty(studentDto.getFaculty())
                 .points(studentDto.getPoints())
                 .gender(studentDto.getGender() != null
-                        ? Student.Gender.valueOf(studentDto.getGender().name())
+                        ? Users.Gender.valueOf(studentDto.getGender().name())
                         : null)
                 .build();
 

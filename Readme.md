@@ -6,12 +6,12 @@
 **BodyRequest:**
 ```
 {
-    "firstName": "firstName",
-    "lastName": "lastName",
+    "name": "name",
     "surname": "surname",
-    "email": "email",
+    "patronymic": "patronymic",
+    "mail": "mail",
     "phone": "phone",
-    "position": "position",
+    "role": "TEACHER",
     "password": "password",
     "gender": "MEN",
     "points": 0
@@ -21,12 +21,12 @@
 ```
 {
     "id": 1,
-    "firstName": "firstName",
-    "lastName": "lastName",
+    "name": "name",
     "surname": "surname",
-    "email": "email",
+    "patronymic": "patronymic",
+    "mail": "mail",
     "phone": "phone",
-    "position": "position",
+    "role": "TEACHER",
     "password": "password",
     "gender": "MEN",
     "points": 0
@@ -49,17 +49,17 @@
 ```
 
 ## Получить Преподавателя по идентификатору
-### [GET] api/v1/teachers/{teacherId}
+### [GET] /api/v1/teachers/{teacherId}
 **Ответ:**
 ```
 {
     "id": 1,
-    "firstName": "firstName",
-    "lastName": "lastName",
+    "name": "name",
     "surname": "surname",
-    "email": "email",
+    "patronymic": "patronymic",
+    "mail": "mail",
     "phone": "phone",
-    "group": "group",
+    "role": "TEACHER",
     "faculty": "faculty",
     "password": "password",
     "gender": "MEN",
@@ -79,12 +79,13 @@
 **Ответ:**
 ```
     "id": 1,
-    "firstName": "firstName",
-    "lastName": "lastName",
+    "name": "name",
     "surname": "surname",
-    "email": "email",
+    "patronymic": "patronymic",
+    "mail": "mail",
     "phone": "phone",
     "group": "group",
+    "role": "TEACHER",
     "faculty": "faculty",
     "password": "password",
     "gender": "MEN",
@@ -117,12 +118,13 @@
 **BodyRequest:**
 ```
 {
-    "firstName": "firstName",
-    "lastName": "lastName",
+    "name": "name",
     "surname": "surname",
-    "email": "email",
+    "patronymic": "patronymic",
+    "mail": "mail",
     "phone": "phone",
     "group": "group",
+    "role": "STUDENT",
     "faculty" : "faculty",
     "password": "password",
     "gender": "MEN",
@@ -133,12 +135,13 @@
 ```
 {
     "id": 1,
-    "firstName": "firstName",
-    "lastName": "lastName",
+    "name": "name",
     "surname": "surname",
-    "email": "email",
+    "patronymic": "patronymic",
+    "mail": "mail",
     "phone": "phone",
     "group": "group",
+    "role": "STUDENT",
     "faculty": "faculty",
     "password": "password",
     "gender": "MEN",
@@ -147,7 +150,7 @@
 ```
 
 ## Получить всех Студентов
-### [GET] api/v1/students
+### [GET] /api/v1/students
 **Ответ:**
 ```
 [ 
@@ -168,12 +171,13 @@
 ```
 {
     "id": 1,
-    "firstName": "firstName",
-    "lastName": "lastName",
+    "name": "name",
     "surname": "surname",
-    "email": "email",
+    "patronymic": "patronymic",
+    "mail": "mail",
     "phone": "phone",
     "group": "group",
+    "role": "STUDENT",
     "faculty": "faculty",
     "password": "password",
     "gender": "MEN",
@@ -193,12 +197,13 @@
 **Ответ:**
 ```
     "id": 1,
-    "firstName": "firstName",
-    "lastName": "lastName",
+    "name": "name",
     "surname": "surname",
-    "email": "email",
+    "patronymic": "patronymic",
+    "mail": "mail",
     "phone": "phone",
     "group": "group",
+    "role": "STUDENT",
     "faculty": "faculty",
     "password": "password",
     "gender": "MEN",
@@ -222,3 +227,30 @@
 
 ## Удалить Студента
 ### [DELETE] /api/v1/students/delete/{studentId}
+
+# Авторизация 
+### [POST] /api/v1/login
+**BodyRequest:**
+```
+{
+    "mail": "mail",
+    "password": "password"
+}
+```
+**Ответ:**
+```
+{
+    "id": 1,
+    "name": "name",
+    "surname": "surname",
+    "patronymic": "patronymic",
+    "mail": "mail",
+    "phone": "phone",
+    "faculty": "faculty",
+    "group": "group",
+    "role": "TEACHER",
+    "password": "password",
+    "gender": "MEN",
+    "points": 0
+}
+```

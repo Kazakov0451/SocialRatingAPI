@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Egor
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(30)
+              - column:
+                  name: surname
+                  type: varchar(30)
+              - column:
+                  name: patronymic
+                  type: varchar(30)
+              - column:
+                  name: mail
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(15)
+              - column:
+                  name: group_student
+                  type: varchar(15)
+              - column:
+                  name: faculty
+                  type: varchar(30)
+              - column:
+                  name: password
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: points
+                  type: bigint
+              - column:
+                  name: gender
+                  type: varchar(15)
+              - column:
+                  name: role
+                  type: varchar(15)
+                  constraints:
+                    nullable: false

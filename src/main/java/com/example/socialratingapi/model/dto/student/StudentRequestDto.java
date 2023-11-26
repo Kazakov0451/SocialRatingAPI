@@ -1,5 +1,6 @@
 package com.example.socialratingapi.model.dto.student;
 
+import com.example.socialratingapi.model.dto.Role.RoleDto;
 import com.example.socialratingapi.model.dto.gender.GenderDto;
 import lombok.*;
 
@@ -10,11 +11,12 @@ import lombok.*;
 @AllArgsConstructor
 public class StudentRequestDto {
 
-    private String firstName;
-    private String lastName;
+    private String name;
     private String surname;
-    private String email;
+    private String patronymic;
+    private String mail;
     private String phone;
+    private RoleDto role;
     private String group;
     private String faculty;
     private String password;

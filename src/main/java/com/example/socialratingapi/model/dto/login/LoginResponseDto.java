@@ -1,4 +1,4 @@
-package com.example.socialratingapi.model.dto.student;
+package com.example.socialratingapi.model.dto.login;
 
 import com.example.socialratingapi.model.dto.Role.RoleDto;
 import com.example.socialratingapi.model.dto.gender.GenderDto;
@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class StudentResponseDto {
+public class LoginResponseDto {
 
     private Long id;
     private String name;

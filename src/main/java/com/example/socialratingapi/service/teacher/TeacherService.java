@@ -9,8 +9,8 @@ import java.util.List;
 public interface TeacherService {
     List<TeacherResponseDto> getAllTeacher();
     TeacherResponseDto getByIdTeacher(Long id);
-    TeacherResponseDto createTeacher(TeacherRequestDto teacherDto);
+    TeacherResponseDto createTeacher(TeacherRequestDto userDto);
     void teacherGivePointsStudent(PointDto pointDto);
-    TeacherResponseDto updateTeacher(TeacherRequestDto teacherDto, Long teacherId);
+    TeacherResponseDto updateTeacher(TeacherRequestDto userDto, Long teacherId);
     void deleteTeacher(Long id);
 }

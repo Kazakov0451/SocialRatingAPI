@@ -1,6 +1,7 @@
 package com.example.socialratingapi.converter;
 
-import com.example.socialratingapi.data.entity.Teacher;
+import com.example.socialratingapi.data.entity.Users;
+import com.example.socialratingapi.model.dto.Role.RoleDto;
 import com.example.socialratingapi.model.dto.teacher.TeacherRequestDto;
 import com.example.socialratingapi.model.dto.teacher.TeacherResponseDto;
 import com.example.socialratingapi.model.dto.gender.GenderDto;
@@ -11,20 +12,23 @@ import java.time.LocalDateTime;
 @Component
 public class TeacherConverter {
 
-    public TeacherResponseDto toDto(Teacher teacher) {
+    public TeacherResponseDto toDto(Users teacher) {
         if (teacher == null) {
             return null;
         }
 
         return TeacherResponseDto.builder()
                 .id(teacher.getId())
-                .firstName(teacher.getFirstName())
-                .lastName(teacher.getLastName())
+                .name(teacher.getName())
                 .surname(teacher.getSurname())
+                .patronymic(teacher.getPatronymic())
                 .password(teacher.getPassword())
-                .email(teacher.getEmail())
+                .mail(teacher.getMail())
                 .phone(teacher.getPhone())
-                .position(teacher.getPosition())
+                .faculty(teacher.getFaculty())
+                .role(teacher.getRole() != null
+                        ? RoleDto.valueOf(teacher.getRole().name())
+                        : null)
                 .gender(teacher.getGender() != null
                         ? GenderDto.valueOf(teacher.getGender().name())
                         : null)
@@ -33,23 +37,26 @@ public class TeacherConverter {
 
     }
 
-    public Teacher toEntity(TeacherRequestDto teacherDto) {
+    public Users toEntity(TeacherRequestDto teacherDto) {
         if (teacherDto == null) {
             return null;
         }
 
-        return Teacher.builder()
+        return Users.builder()
                 .createdAt(LocalDateTime.now())
-                .firstName(teacherDto.getFirstName())
-                .lastName(teacherDto.getLastName())
+                .name(teacherDto.getName())
                 .surname(teacherDto.getSurname())
+                .patronymic(teacherDto.getPatronymic())
                 .password(teacherDto.getPassword())
-                .email(teacherDto.getEmail())
+                .mail(teacherDto.getMail())
                 .phone(teacherDto.getPhone())
-                .position(teacherDto.getPosition())
+                .faculty(teacherDto.getFaculty())
+                .role(teacherDto.getRole() != null
+                        ? Users.Role.valueOf(teacherDto.getRole().name())
+                        : null)
                 .points(teacherDto.getPoints())
                 .gender(teacherDto.getGender() != null
-                        ? Teacher.Gender.valueOf(teacherDto.getGender().name())
+                        ? Users.Gender.valueOf(teacherDto.getGender().name())
                         : null)
                 .build();
 
